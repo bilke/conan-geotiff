@@ -17,7 +17,7 @@ class LibgeotiffConan(ConanFile):
 
     def source(self):
         zip_name = self.ZIP_FOLDER_NAME + ".zip"
-        download("http://download.osgeo.org/geotiff/libgeotiff/%s" % zip_name , zip_name)
+        download("http://opengeosys.s3.amazonaws.com/ogs6-lib-sources/%s" % zip_name , zip_name)
         unzip(zip_name)
         os.unlink(zip_name)
 
