@@ -37,4 +37,7 @@ class LibgeotiffConan(ConanFile):
         self.copy("*", dst=".", src=self.INSTALL_DIR)
 
     def package_info(self):
+        if self.settings.os == "Windows":
+            self.cpp_info.libs = ["geotiff", "xtiff"]
+        else:
             self.cpp_info.libs = ["geotiff"]
