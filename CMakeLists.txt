@@ -1,0 +1,6 @@
+PROJECT(conanlibgeotiff)
+cmake_minimum_required(VERSION 2.8)
+include(conanbuildinfo.cmake)
+CONAN_BASIC_SETUP()
+set(GEOTIFF_CSV_DATA_DIR ${CMAKE_SOURCE_DIR}/libgeotiff-1.4.1/csv)
+add_subdirectory(libgeotiff-1.4.1)

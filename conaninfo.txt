@@ -1,0 +1,28 @@
+[settings]
+    arch=x86_64
+    build_type=Debug
+    compiler=apple-clang
+    compiler.libcxx=libc++
+    compiler.version=7.3
+    os=Macos
+
+[requires]
+    libtiff/4.Y.Z
+
+[options]
+
+
+[full_settings]
+    arch=x86_64
+    build_type=Debug
+    compiler=apple-clang
+    compiler.libcxx=libc++
+    compiler.version=7.3
+    os=Macos
+
+[full_requires]
+    libtiff/4.0.6@bilke/stable:523a9bd0707f067db6ade8718fca96a60c5c5aa4
+    zlib/1.2.8@lasote/stable:0b32b1c0d6b042784a6f700c4f6ccd46b647f908
+
+[full_options]
+    zlib:shared=False
