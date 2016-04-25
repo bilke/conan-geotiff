@@ -1,6 +1,6 @@
 import os
 from conans import ConanFile, CMake
-from conans.tools import download, unzip
+from conans.tools import download, unzip, patch
 
 class LibgeotiffConan(ConanFile):
     name = "libgeotiff"
@@ -22,6 +22,20 @@ class LibgeotiffConan(ConanFile):
         os.unlink(zip_name)
 
     def build(self):
+        patch_content = '''--- libxtiff/CMakeLists.txt	2014-09-29 15:30:34.000000000 +0200
++++ libxtiff/CMakeLists.txt	2016-04-25 16:58:07.000000000 +0200
+@@ -8,2 +8,8 @@
+
+-ADD_LIBRARY(xtiff STATIC xtiff.c)
++ADD_LIBRARY(xtiff xtiff.c)
++
++INSTALL( TARGETS xtiff
++	 EXPORT depends
++	 RUNTIME DESTINATION bin
++	 LIBRARY DESTINATION lib
++	 ARCHIVE DESTINATION lib )
+'''
+        patch(patch_string=patch_content, base_path=self.ZIP_FOLDER_NAME)
         cmake = CMake(self.settings)
         if self.settings.os == "Windows":
             self.run("IF not exist _build mkdir _build")
@@ -37,7 +51,4 @@ class LibgeotiffConan(ConanFile):
         self.copy("*", dst=".", src=self.INSTALL_DIR)
 
     def package_info(self):
-        if self.settings.os == "Windows":
-            self.cpp_info.libs = ["geotiff", "xtiff"]
-        else:
-            self.cpp_info.libs = ["geotiff"]
+        self.cpp_info.libs = ["geotiff", "xtiff"]
