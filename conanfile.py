@@ -24,10 +24,13 @@ class LibgeotiffConan(ConanFile):
     def build(self):
         patch_content = '''--- libxtiff/CMakeLists.txt	2014-09-29 15:30:34.000000000 +0200
 +++ libxtiff/CMakeLists.txt	2016-04-25 16:58:07.000000000 +0200
-@@ -8,2 +8,8 @@
+@@ -8,2 +8,11 @@
 
 -ADD_LIBRARY(xtiff STATIC xtiff.c)
 +ADD_LIBRARY(xtiff xtiff.c)
++IF(WIN32)
++	SET_TARGET_PROPERTIES(xtiff PROPERTIES DEBUG_POSTFIX _d)
++ENDIF()
 +
 +INSTALL( TARGETS xtiff
 +	 EXPORT depends
@@ -51,4 +54,7 @@ class LibgeotiffConan(ConanFile):
         self.copy("*", dst=".", src=self.INSTALL_DIR)
 
     def package_info(self):
-        self.cpp_info.libs = ["geotiff", "xtiff"]
+        if self.settings.os == "Windows" and self.settings.build_type == "Debug":
+            self.cpp_info.libs = ["geotiff_d", "xtiff_d"]
+        else:
+            self.cpp_info.libs = ["geotiff", "xtiff"]
