@@ -8,7 +8,7 @@ class LibgeotiffConan(ConanFile):
     generators = "cmake"
     settings = "os", "compiler", "build_type", "arch"
     requires = "libtiff/4.0.6@bilke/stable", "proj/4.9.2@bilke/stable"
-    exports = ["CMakeLists.txt", "FindGEOTIFF.cmake"]
+    exports = ["CMakeLists.txt", "FindLibGeoTiff.cmake"]
     url="http://github.com/bilke/conan-geotiff"
     license="http://trac.osgeo.org/geotiff/"
 
@@ -50,7 +50,7 @@ class LibgeotiffConan(ConanFile):
         self.run("%s && cmake --build . --target install %s" % (cd_build, cmake.build_config))
 
     def package(self):
-        self.copy("FindGEOTIFF.cmake", ".", ".")
+        self.copy("FindLibGeoTiff.cmake", ".", ".")
         self.copy("*", dst=".", src=self.INSTALL_DIR)
 
     def package_info(self):
