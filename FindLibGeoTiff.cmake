@@ -7,6 +7,7 @@ find_library(GEOTIFF_LIBRARY NAMES ${CONAN_LIBS_LIBGEOTIFF}
 	NO_DEFAULT_PATH)
 
 find_package(TIFF REQUIRED)
+find_package(PROJ4 REQUIRED)
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(GEOTIFF
@@ -15,6 +16,6 @@ find_package_handle_standard_args(GEOTIFF
 )
 
 set(GEOTIFF_INCLUDE_DIRS ${GEOTIFF_INCLUDE_DIR} ${TIFF_INCLUDE_DIRS})
-set(GEOTIFF_LIBRARIES ${GEOTIFF_LIBRARY} ${TIFF_LIBRARIES})
+set(GEOTIFF_LIBRARIES ${GEOTIFF_LIBRARY} ${TIFF_LIBRARIES} ${PROJ4_LIBRARIES})
 
 mark_as_advanced(GEOTIFF_INCLUDE_DIR GEOTIFF_LIBRARY)
