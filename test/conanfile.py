@@ -19,4 +19,4 @@ class TiffReuseConan(ConanFile):
         self.copy(pattern="*.dylib", dst="bin", src="lib")
 
     def test(self):
-        self.run("cd bin && ./geotifftest")
+        self.run("cd bin && .%sgeotifftest" % os.sep)
