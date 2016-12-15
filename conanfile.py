@@ -7,8 +7,8 @@ class LibgeotiffConan(ConanFile):
     version = "1.4.1"
     generators = "cmake"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = "shared=False"
+    options = {"shared": [True, False], "utilities": [True, False]}
+    default_options = "shared=False", "utilities=True"
     requires = "libtiff/4.0.6@bilke/stable", "proj/4.9.2@bilke/stable"
     exports = ["CMakeLists.txt", "FindLibGeoTiff.cmake"]
     url="http://github.com/bilke/conan-geotiff"
@@ -52,6 +52,8 @@ class LibgeotiffConan(ConanFile):
             CMAKE_OPTIONALS += "-DBUILD_SHARED_LIBS=OFF"
         else:
             CMAKE_OPTIONALS += "-DBUILD_SHARED_LIBS=ON"
+        if self.options.utilities == False:
+            CMAKE_OPTIONALS += "-DWITH_UTILITIES=OFF"
         self.run("%s && cmake .. -DCMAKE_INSTALL_PREFIX=../%s %s %s" % (cd_build, self.INSTALL_DIR, cmake.command_line, CMAKE_OPTIONALS))
         self.run("%s && cmake --build . %s" % (cd_build, cmake.build_config))
         self.run("%s && cmake --build . --target install %s" % (cd_build, cmake.build_config))
