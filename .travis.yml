@@ -6,7 +6,7 @@ language: python
 env:
   global:
     - CONAN_UPLOAD=1
-    - CONAN_REFERENCE="libgeotiff/1.4.1"
+    - CONAN_REFERENCE="libgeotiff/1.4.2"
     - CONAN_USERNAME="bilke"
     - CONAN_CHANNEL="testing"
     - CONAN_TOTAL_PAGES=1

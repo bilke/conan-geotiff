@@ -6,7 +6,7 @@ username = os.getenv("CONAN_USERNAME", "bilke")
 
 class TiffReuseConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    requires = "libgeotiff/1.4.1@%s/%s" % (username, channel)
+    requires = "libgeotiff/1.4.2@%s/%s" % (username, channel)
     generators = "cmake"
 
     def build(self):
