@@ -6,6 +6,7 @@ env:
     - CONAN_LOGIN_USERNAME="bilke"
     - CONAN_STABLE_BRANCH_PATTERN="release/*"
     - CONAN_UPLOAD="https://api.bintray.com/conan/ogs/conan"
+    - CONAN_REMOTES="https://api.bintray.com/conan/ogs/conan"
 
 linux: &linux
   os: linux
