@@ -11,7 +11,7 @@ class LibgeotiffConan(ConanFile):
     generators = "cmake"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "utilities": [True, False]}
-    default_options = "shared=False", "utilities=True"
+    default_options = "shared=False", "utilities=False"
     requires = "libtiff/4.0.6@bilke/stable", "proj/4.9.2@bilke/stable"
     exports = ["CMakeLists.txt", "FindLibGeoTiff.cmake"]
     url="http://github.com/bilke/conan-geotiff"
