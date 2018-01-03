@@ -17,6 +17,9 @@ class LibgeotiffConan(ConanFile):
     url="http://github.com/bilke/conan-geotiff"
     license="http://trac.osgeo.org/geotiff/"
 
+    def config(self):
+        del self.settings.compiler.libcxx
+
     def source(self):
         zip_name = "%s.zip" % self.version
         download("https://github.com/ufz/geotiff/archive/%s" % zip_name, zip_name)
