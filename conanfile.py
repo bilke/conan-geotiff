@@ -20,6 +20,7 @@ class LibgeotiffConan(ConanFile):
     def config(self):
         del self.settings.compiler.libcxx
         if self.settings.os == "Windows":
+          self.options.remove("fPIC")
           self.options.shared = False
 
     def source(self):
