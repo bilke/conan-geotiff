@@ -10,8 +10,8 @@ class LibgeotiffConan(ConanFile):
     version = "1.4.2"
     generators = "cmake"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False], "utilities": [True, False]}
-    default_options = "shared=False", "utilities=False"
+    options = {"shared": [True, False], "utilities": [True, False], "fPIC": [True, False]}
+    default_options = "shared=False", "utilities=False", "fPIC=False"
     requires = "libtiff/4.0.8@bincrafters/stable", "proj/4.9.2@bilke/stable"
     exports = ["CMakeLists.txt", "FindLibGeoTiff.cmake"]
     url="http://github.com/bilke/conan-geotiff"
