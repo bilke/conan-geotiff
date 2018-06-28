@@ -19,6 +19,8 @@ class LibgeotiffConan(ConanFile):
 
     def config(self):
         del self.settings.compiler.libcxx
+        if self.settings.os == "Windows":
+          self.options.shared = False
 
     def source(self):
         zip_name = "%s.zip" % self.version
