@@ -12,7 +12,7 @@ class LibgeotiffConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "utilities": [True, False], "fPIC": [True, False]}
     default_options = "shared=False", "utilities=False", "fPIC=False"
-    requires = "libtiff/4.0.8", "proj/4.9.2@bilke/stable"
+    requires = "libtiff/4.0.9", "proj/4.9.2@bilke/stable"
     exports = ["CMakeLists.txt", "FindLibGeoTiff.cmake"]
     url="http://github.com/bilke/conan-geotiff"
     license="http://trac.osgeo.org/geotiff/"
